@@ -1,0 +1,14 @@
+.Container{
+    background-color:white;
+    width:600px;
+    border-radius: 10px;
+    margin:auto;
+    padding:20px;
+    margin-top: 50px;
+    
+}
+body{
+    background-color: blueviolet;
+}
+
+

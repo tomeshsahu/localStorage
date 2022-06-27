@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Session Storeage</title>
+    </head>
+    <body>
+        <button onclick="AddData()">AddButton</button>
+        <button onclick="getData()">GetData</button>
+        <button onclick="AddArray()">AddArray</button>
+        <button onclick="getArray()">getArray</button>
+
+        <script>
+         function AddData()
+         {
+             let name="Amit";
+             let name1="Churamani";
+             let a=sessionStorage.setItem("name",name);
+             sessionStorage.setItem("name1",name1);
+             if(a!=null)
+             {
+                 alert("data added successfully");
+             }
+             else
+             {
+                 alert("data already added");
+             }
+         }
+         function getData()
+         {
+             let a=sessionStorage.getItem("name");
+             alert(a);
+         }
+
+         function AddArray()
+         {
+             let arr=["kamal","yash","sukant"];
+            // sessionStorage.setItem("store",arr);
+             let a=sessionStorage.setItem("store",(JSON.stringify(arr)));
+             alert("added");
+             
+         }
+         function getArray()
+             {
+                let b=JSON.parse(sessionStorage.getItem("store"));
+                alert(b);
+
+             }
+         
+        </script>
+    </body>
+</html>

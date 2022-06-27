@@ -1,0 +1,126 @@
+ <!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div >
+            Name:-<input type="text" placeholder="Enter Name" id="name" required.>
+        </div>
+
+        <div >
+            Email:-<input type="email" placeholder="Enter Email" id="email" required.>
+        </div>
+
+        <div >
+            Phone:-<input type="number" placeholder="Enter Phone Number" id="phone" required.>
+        </div>
+
+        <div >
+            Password:-<input type="password" placeholder="Enter Password" id="pass" required.>
+        </div>
+        
+        <div id="msg"></div>
+        
+<br>
+        <input type="submit" onclick="Submit()" value="submit" />
+        <button onclick="GetData()" >GetData</button>
+        <div id="msg"></div>
+        <br><br><br>
+        <div>
+            <h1>Get Data From localStorage</h1>
+            <table style="border:2px solid grey;padding:10px;">
+                <tr>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>Phone</td>
+                    <td>Password</td>
+                    <tr><div id="root"></div></tr>
+                </tr>
+                
+            </table>
+        </div>
+        <script>
+
+function Submit()
+{
+    let name=document.getElementById("name").value;
+    let email=document.getElementById("email").value;
+    let phone=document.getElementById("phone").value;
+    let pass=document.getElementById("pass").value;
+    
+    
+    document.getElementById("msg").innerHTML="";
+    
+
+    if(name=="" &&  email=="" && phone=="" && pass=="")
+    {
+        document.getElementById("msg").innerHTML="*Please Enter text*";
+        document.getElementById("msg").style="color:red";
+    }
+  
+    else
+    {    
+        let arr=JSON.parse(localStorage.getItem("crud")) || [];
+        
+         var store=[name,email,phone,pass];
+        arr.push(store);
+         let a=localStorage.setItem('crud',JSON.stringify(arr));
+         alert(a);
+        // document.getElementById("msg").innerHTML="Data Added Successfully";
+        // document.getElementById("msg").style="color:green";   
+    }     
+    
+
+    // else(arr!=null && name!="" && email!="" && phone!="" && pass!="" )
+    // else
+    // {
+    //     var store=[name,email,phone,pass];
+    //     arr.push(store);
+
+    //     let a=localStorage.setItem('crud',JSON.stringify(arr));
+        
+    //     document.getElementById("msg").innerHTML="Data Added Successfully";
+    //     document.getElementById("msg").style="color:green";
+    // }
+
+    document.getElementById("name").value="";
+    document.getElementById("email").value="";
+    document.getElementById("phone").value="";
+    document.getElementById("pass").value="";
+
+}
+
+
+
+function GetData()
+{
+    
+    let html="";
+    let a=(localStorage.getItem('crud'));
+    let data=(JSON.parse(a));
+    for(let k in data)
+    {
+        html=html+`<tr><td>'${k.name}'</td><td>'${data[k]}'</td></tr>`
+    }
+    
+   
+    
+  
+    document.getElementById("root").innerHTML=html;
+    
+}
+        </script>
+    </body>
+</html> 
+
+
+
+
+
+
+
+
+
+
+
